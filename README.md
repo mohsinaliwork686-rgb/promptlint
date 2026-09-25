@@ -160,6 +160,10 @@ applied. Python sources are never rewritten.
 
 ## Development
 
+The design decisions and their reasoning are in
+[docs/IMPLEMENTATION_PLAN.md](docs/IMPLEMENTATION_PLAN.md) — read that first if you want to
+change how extraction or the fixer works.
+
 ```bash
 git clone https://github.com/mohsinaliwork686-rgb/promptlint
 cd promptlint
