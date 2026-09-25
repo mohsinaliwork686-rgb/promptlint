@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from promptlint.rules import budget, secrets, template  # noqa: F401
+from promptlint.rules import budget, injection, secrets, template  # noqa: F401
 from promptlint.rules.base import REGISTRY, Rule, RuleContext, all_rules, register
 
 __all__ = ["REGISTRY", "Rule", "RuleContext", "all_rules", "register"]
