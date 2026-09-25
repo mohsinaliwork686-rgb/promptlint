@@ -90,7 +90,8 @@ def _text(diagnostics: list[Diagnostic], file_count: int, color: bool) -> str:
 
     counts = _counts(diagnostics)
     if not diagnostics:
-        lines.append(paint(f"All clear — {_plural(file_count, 'file')} scanned, no problems.", "dim"))
+        message = f"All clear — {_plural(file_count, 'file')} scanned, no problems."
+        lines.append(paint(message, "dim"))
         return "\n".join(lines)
 
     parts = []

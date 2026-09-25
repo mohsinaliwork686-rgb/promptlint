@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from enum import Enum
+from enum import StrEnum
 
 
-class Severity(str, Enum):
+class Severity(StrEnum):
     ERROR = "error"
     WARNING = "warning"
 

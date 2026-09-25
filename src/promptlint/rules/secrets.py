@@ -17,7 +17,10 @@ _PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("AWS access key id", re.compile(r"AKIA[0-9A-Z]{16}")),
     ("Google API key", re.compile(r"AIza[0-9A-Za-z_\-]{35}")),
     ("Slack token", re.compile(r"xox[baprs]-[A-Za-z0-9\-]{10,}")),
-    ("JSON web token", re.compile(r"eyJ[A-Za-z0-9_\-]{8,}\.[A-Za-z0-9_\-]{8,}\.[A-Za-z0-9_\-]{8,}")),
+    (
+        "JSON web token",
+        re.compile(r"eyJ[A-Za-z0-9_\-]{8,}\.[A-Za-z0-9_\-]{8,}\.[A-Za-z0-9_\-]{8,}"),
+    ),
     ("bearer token", re.compile(r"(?i)\bbearer\s+[A-Za-z0-9_\-.=]{20,}")),
     (
         "credential assignment",

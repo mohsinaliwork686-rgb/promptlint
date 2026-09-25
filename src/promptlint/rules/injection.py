@@ -55,6 +55,6 @@ def _is_delimited(text: str, start: int, end: int) -> bool:
     if before.endswith(_DELIMITERS) and after.startswith(_DELIMITERS):
         return True
     match = _OPEN_TAG_RE.search(text[:start].rstrip("\n").rstrip())
-    if match and re.match(r"\s*</" + re.escape(match.group(1)) + r">", text[end:]):
-        return True
-    return False
+    return bool(match) and bool(
+        re.match(r"\s*</" + re.escape(match.group(1)) + r">", text[end:])
+    )

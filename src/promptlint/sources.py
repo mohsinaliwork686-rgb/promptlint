@@ -160,7 +160,9 @@ def _parse_front_matter(block: str) -> dict:
 
 # --------------------------------------------------------------------------- yaml files
 
-_YAML_KEY_RE = re.compile(r"^(?P<indent>[ \t]*)(?P<key>[A-Za-z_][\w.\-]*)[ \t]*:[ \t]*(?P<value>.*)$")
+_YAML_KEY_RE = re.compile(
+    r"^(?P<indent>[ \t]*)(?P<key>[A-Za-z_][\w.\-]*)[ \t]*:[ \t]*(?P<value>.*)$"
+)
 _BLOCK_SCALAR_RE = re.compile(r"^[|>][+-]?\d*$")
 
 
