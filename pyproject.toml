@@ -7,7 +7,7 @@ name = "promptlint"
 version = "0.1.0"
 description = "A linter for LLM prompt templates — catches the bugs that only show up in production."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = { file = "LICENSE" }
 authors = [{ name = "Mohsin Ali" }]
 keywords = ["llm", "prompt", "linter", "static-analysis", "prompt-engineering"]
@@ -16,7 +16,6 @@ classifiers = [
   "Environment :: Console",
   "Intended Audience :: Developers",
   "License :: OSI Approved :: MIT License",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
