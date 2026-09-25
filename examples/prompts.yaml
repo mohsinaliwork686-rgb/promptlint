@@ -1,0 +1,8 @@
+agents:
+  summarizer:
+    system: |
+      Summarize the document below.
+      Return at most {max_sentences} sentences.  
+      Document:
+      {document}
+    user: "Summarize this for {audience}"
