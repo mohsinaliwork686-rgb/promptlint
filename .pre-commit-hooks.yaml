@@ -1,0 +1,7 @@
+- id: promptlint
+  name: promptlint
+  description: Lint LLM prompt templates for placeholder, secret and budget problems.
+  entry: promptlint
+  language: python
+  types_or: [python, markdown, text, yaml]
+  pass_filenames: true
