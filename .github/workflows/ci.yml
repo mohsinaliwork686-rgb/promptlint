@@ -45,5 +45,11 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -e .
-      - name: Lint our own examples
-        run: promptlint examples --format github --fail-on none
+      - name: The linter runs on the example files
+        run: promptlint examples --fail-on none
+      - name: And exits non-zero when they contain errors
+        run: |
+          if promptlint examples; then
+            echo "expected a non-zero exit on the deliberately broken examples" >&2
+            exit 1
+          fi
