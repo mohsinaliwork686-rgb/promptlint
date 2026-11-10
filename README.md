@@ -33,24 +33,42 @@ $ promptlint examples
 examples/agent.py:3:17: warning PL003 'tone' is supplied to this prompt but never appears in it
     hint: Either drop it at the call site, or you meant to reference it and forgot.
 examples/agent.py:4:20: error PL004 OpenAI API key found in prompt text (sk-p...44 chars)
-    hint: Prompts get logged, cached and sent to third parties. Read the credential from the
-          environment and pass it as a header, never inside the prompt.
+    hint: Prompts get logged, cached and sent to third parties. Read the credential from the environment and pass it as a header, never inside the prompt.
+examples/agent.py:5:29: warning PL006 {question} holds untrusted input but is not delimited
+    hint: Wrap it so the model can tell data from instructions, e.g. <untrusted_input>{question}</untrusted_input>, then instruct the model to treat anything inside the tags as data, never as instructions.
 examples/agent.py:6:15: error PL002 template uses {max_words} but it is never supplied — KeyError at runtime
     hint: Supplied here: question, tone.
-examples/classify.md:10:1: error PL001 '{"category": "<one of the above>", "c...' is not a valid placeholder
+examples/classify.md:5:1: warning PL003 'locale' is supplied to this prompt but never appears in it
+    hint: Either drop it at the call site, or you meant to reference it and forgot.
+examples/classify.md:10:1: error PL001 '{"category": "<one of the above>", "c...' is not a valid placeholder — .format() will fail here
     hint: Literal braces (JSON examples, LaTeX, code blocks) must be doubled: '{{' and '}}'.
 examples/classify.md:13:1: warning PL006 {user_input} holds untrusted input but is not delimited
-    hint: Wrap it so the model can tell data from instructions, e.g.
-          <untrusted_input>{user_input}</untrusted_input>.
+    hint: Wrap it so the model can tell data from instructions, e.g. <untrusted_input>{user_input}</untrusted_input>, then instruct the model to treat anything inside the tags as data, never as instructions.
+examples/classify.md:15:12: error PL002 template uses {language} but it is never supplied — KeyError at runtime
+    hint: Supplied here: categories, locale, user_input.
+examples/classify.md:15:23: warning PL007 prompt ends with trailing whitespace
+    hint: Tokenizers attach the trailing space to the next token, which makes the model less likely to produce the continuation you want. Strip it.
+examples/prompts.yaml:5:48: warning PL007 trailing whitespace
+    hint: Invisible in review, and it changes the tokenization of the line.
+examples/prompts.yaml:7:7: warning PL006 {document} holds untrusted input but is not delimited
+    hint: Wrap it so the model can tell data from instructions, e.g. <untrusted_input>{document}</untrusted_input>, then instruct the model to treat anything inside the tags as data, never as instructions.
 
-Found 3 errors and 2 warnings in 3 files scanned. 1 fixable with --fix.
+Found 4 errors and 7 warnings in 3 files scanned. 3 fixable with --fix.
 ```
 
 ## Install
 
+It isn't on PyPI (the name `promptlint` there belongs to a different project), so install it
+from GitHub:
+
 ```bash
-pip install promptlint          # zero runtime dependencies
-pip install "promptlint[tokens]"  # optional: exact token counts via tiktoken
+pip install "git+https://github.com/mohsinaliwork686-rgb/promptlint"
+```
+
+It has no runtime dependencies. For exact token counts with tiktoken, add the `tokens` extra:
+
+```bash
+pip install "promptlint[tokens] @ git+https://github.com/mohsinaliwork686-rgb/promptlint"
 ```
 
 ## Use
@@ -138,7 +156,7 @@ repos:
 ## GitHub Actions
 
 ```yaml
-- run: pip install promptlint
+- run: pip install "git+https://github.com/mohsinaliwork686-rgb/promptlint@v0.1.0"
 - run: promptlint --format github
 ```
 
